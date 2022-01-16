@@ -15,6 +15,7 @@ import com.example.foodtracking.view.Fragment.MacroFragment
 import com.example.foodtracking.view.Fragment.RecipeFragment
 import com.example.foodtracking.viewModel.DetailViewModel
 import com.squareup.picasso.Picasso
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
     private val viewModel = DetailViewModel()
@@ -79,6 +80,7 @@ class DetailActivity : AppCompatActivity() {
         doneButton.setOnClickListener {
             val userMacros = getUserMacro()
             val newUserMacros = viewModel.addDailyMacro(userMacros)
+            saveDate()
             saveUserMacro(newUserMacros)
             saveInRoom()
             finish()
@@ -88,6 +90,14 @@ class DetailActivity : AppCompatActivity() {
     private fun changeFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayoutDetails, fragment).commit()
+    }
+
+    private fun saveDate() {
+        val sharedPreferences = getSharedPreferences("com.example.foodtracking", Context.MODE_PRIVATE)
+        val day = sharedPreferences.getInt("day", 0)
+        if (day == 0) {
+            sharedPreferences.edit().putInt("day", Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).apply()
+        }
     }
 
     private fun getUserMacro(): Macros {

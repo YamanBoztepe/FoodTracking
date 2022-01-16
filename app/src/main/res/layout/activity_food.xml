@@ -230,7 +230,7 @@
             android:layout_weight="1"
             android:backgroundTint="#272729"
             app:icon="@android:drawable/ic_menu_search"
-            app:iconGravity="top"
+            app:iconGravity="textStart"
             app:iconTint="#ECECEC" />
     </LinearLayout>
 
@@ -241,7 +241,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#709B27"
         app:icon="@android:drawable/ic_menu_search"
-        app:iconGravity="end"
+        app:iconGravity="textEnd"
         app:iconTint="#ECECEC"
         app:layout_constraintBottom_toBottomOf="@+id/customView"
         app:layout_constraintEnd_toStartOf="@+id/editbutton"

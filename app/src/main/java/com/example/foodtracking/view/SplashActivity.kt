@@ -57,12 +57,11 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkDailyMacros() {
-        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        val macrosReset = sharedPreferences.getBoolean("MacrosReset",false)
-        if (hour == 0 && !macrosReset) {
+        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        val savedDate = sharedPreferences.getInt("day",0)
+        if (day != savedDate) {
             resetMacros()
-        } else if (hour != 0 && macrosReset) {
-            sharedPreferences.edit().putBoolean("MacrosReset", false).apply()
+            sharedPreferences.edit().putInt("day", 0).apply()
         }
     }
 
@@ -81,6 +80,5 @@ class SplashActivity : AppCompatActivity() {
         sharedPreferences.edit().putInt("protein", 0).apply()
         sharedPreferences.edit().putInt("fat", 0).apply()
         sharedPreferences.edit().putInt("carbohydrate", 0).apply()
-        sharedPreferences.edit().putBoolean("MacrosReset", true).apply()
     }
 }

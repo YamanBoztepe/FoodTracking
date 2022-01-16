@@ -19,12 +19,7 @@ class HistoryActivity : AppCompatActivity() {
         loadData()
         bindViews()
     }
-/*
-    val foodDatabase = FoodDatabase.getFoodDatabase(this)
-    val cookedFoods = foodDatabase?.studentDao()?.getAllFoods() as ArrayList<CookedFood>
-    println("foods $cookedFoods")
 
- */
     private fun loadData() {
         val foodDatabase = FoodDatabase.getFoodDatabase(this)
         cookedFoods = foodDatabase?.studentDao()?.getAllFoods() as ArrayList<CookedFood>
